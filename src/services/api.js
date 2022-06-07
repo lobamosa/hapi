@@ -1,9 +1,9 @@
 import { useState } from "react"
 import {useRecoilState} from "recoil";
 
-export const post = (url, body) => {
+export const Post = (url, body) => {
     const [data, setData] = useRecoilState('apiState')
-    options = {
+    const options = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -13,7 +13,8 @@ export const post = (url, body) => {
     .then(data => setData({status: "ok", body: data}))
 }
 
-export const get = (url) => {
+export const Get = (url) => {
+    const [data, setData] = useRecoilState('apiState')
     fetch(url).then(response => {response.json()})
     .then(data => setData({status: "ok", body: data}))
 }

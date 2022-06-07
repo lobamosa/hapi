@@ -1,12 +1,12 @@
 import axios from 'axios';
-import { post } from '../services/api';
+import { Post } from '../services/api';
 import React, { useState, useEffect } from 'react';
 
 export default function Card() {
     const [events, setEvents] = useState("");
-    sendParticipation(() => {
-        post(url, {accepted: true})
-    })
+    const sendParticipation = (url) => {
+        Post(url, {accepted: true})
+    }
     useEffect(() => {
         fetch("http://localhost:3000/events")
         .then(res => res.json())
@@ -22,7 +22,7 @@ export default function Card() {
               <div className="text-white" key={event.id}>
                   <h1> {event.title} </h1>
                   <p>{event.place}</p>
-                  <button onClick={sendParticipation()} >y participer</button>
+                  <button >y participer</button>
               </div>
           ))
         )}
